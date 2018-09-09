@@ -1,7 +1,7 @@
 import { bind, wire, Component } from 'hypermorphic';
-import { p } from './PropFactory';
+import { p } from './TableSortablePropFactory';
 
-class Footer extends Component {
+class TableSortableFooter extends Component {
   render() {
     return this.html`
       <tfoot>
@@ -12,5 +12,5 @@ class Footer extends Component {
 }
 
 export {
-  Footer
+  TableSortableFooter
 };

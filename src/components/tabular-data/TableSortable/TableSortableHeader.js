@@ -1,7 +1,7 @@
 import { bind, wire, Component } from 'hypermorphic';
-import { p } from './PropFactory';
+import { p } from './TableSortablePropFactory';
 
-class Header extends Component {
+class TableSortableHeader extends Component {
   onclick(e) {
     //stop the regular link behaviour
     e.preventDefault();
@@ -29,5 +29,5 @@ class Header extends Component {
 }
 
 export {
-  Header
+  TableSortableHeader
 };
