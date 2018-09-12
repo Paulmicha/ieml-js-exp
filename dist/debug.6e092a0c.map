@@ -1,0 +1,1 @@
+{"version":3,"sources":["debug.js"],"names":["console","log"],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAAA,QAAQC,GAAR,CAAY,aAAZ","file":"debug.6e092a0c.map","sourceRoot":"../src/client","sourcesContent":["console.log(\"hello world\");\n"]}

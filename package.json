@@ -1,23 +1,20 @@
 {
   "private": true,
   "devDependencies": {
-    "hypermorphic": "^0.8.0",
-    "proppy": "^1.2.6",
-    "webpack": "^4.17.2",
-    "webpack-cli": "^3.1.0"
+    "parcel-bundler": "^1.9.7"
   },
   "scripts": {
-    "dev": "yarn install",
-    "prod": "yarn install",
-    "build": "npm run purge && npm run bundle",
-    "bundle": "npm run template-to-view && webpack --verbose",
-    "postinstall": "npm run build; echo ''; echo ' use' $(tput bold)npm start$(tput sgr0) or $(tput bold)npm run watch$(tput sgr0) to start developing.; echo ''; echo ' https://viperhtml.js.org/'; echo ''",
-    "purge": "mkdir -p cdn; rm -rf cdn/*; mkdir -p public/js; rm -rf public/js/*.wp; rm -rf public/sw.js",
-    "start": "node ./viper/server/index.js",
-    "template-to-view": "for f in $(ls viper/template/*.html);do f=\"$(basename $f)\";f=\"viper/view/${f:0:$((${#f}-5))}\";echo 'module.exports = (render, model) => render`'>\"$f.js\";cat \"viper/template/$(basename $f).html\">>\"$f.js\";echo '`;'>>\"$f.js\"; done",
-    "watch": "npm run build && (npm run watch-template & npm run watch-client & npm run watch-server) && exit 0",
+    "dev": "npx parcel -p 80 --hmr-port 38081 src/client/index.html",
+    "prod": "yarn run start",
+    "build": "yarn run purge && yarn run bundle",
+    "bundle": "webpack --verbose",
+    "purge": "mkdir -p dist/assets; rm -rf dist/assets/*; mkdir -p dist/js; rm -rf dist/js/*.wp; rm -rf dist/sw.js",
+    "start": "node ./src/server/index.js",
+    "watch": "yarn run build && (yarn run watch-client & yarn run watch-server) && exit 0",
     "watch-client": "webpack-build -d -w -c ./webpack.config.js",
-    "watch-server": "nodemon --watch viper --ignore 'viper/client' --ignore 'viper/template' --ignore 'viper/stats.json' ./viper/server/index.js",
-    "watch-template": "nodemon --ext html --exec 'npm run' --watch viper/template template-to-view"
+    "watch-server": "nodemon --watch src --ignore 'src/client' --ignore 'src/components' --ignore 'src/stats.json' ./src/server/index.js"
+  },
+  "dependencies": {
+    "hypermorphic": "^0.8.0"
   }
 }

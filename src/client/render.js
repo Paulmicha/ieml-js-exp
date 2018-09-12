@@ -1,8 +1,8 @@
-const hyperHTML = require('hyperhtml/cjs');
+const hyperHTML = require('viperhtml');
 
 // TODO [wip] Match component path -> component (view) ?
-const asyncRenderView = (componentNamePath, wire, model) =>
-  import(`../components/${componentNamePath}.js`).then(renderFn => renderFn(wire, model));
+const asyncRenderView = (namePath, wire, model) =>
+  import(`../${namePath}.js`).then(renderFn => renderFn(wire, model));
 
 const view = {
   about: (wire, model) => asyncRenderView('about', wire, model),
